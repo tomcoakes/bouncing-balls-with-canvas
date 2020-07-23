@@ -17,40 +17,37 @@ class Ball {
     this.colour = `rgb(${random(0, 255)},${random(0, 255)},${random(0, 255)})`
     this.size = random(10, 60)
   }
-  draw = draw
-  update = update
-  collisionDetection  = collisionDetection
-}
 
-const draw = function (){
-  ctx.beginPath()
-  ctx.fillStyle = this.colour
-  ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI)
-  ctx.fill()
-}
-
-const update = function (){
-  if ((this.x + this.size) >= width || (this.x - this.size) <= 0) {
-    this.velX = -(this.velX)
+  draw() {
+    ctx.beginPath()
+    ctx.fillStyle = this.colour
+    ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI)
+    ctx.fill()
   }
 
-  if ((this.y + this.size) >= height || (this.y - this.size) <= 0) {
-    this.velY = -(this.velY)
+  update() {
+    if ((this.x + this.size) >= width || (this.x - this.size) <= 0) {
+      this.velX = -(this.velX)
+    }
+
+    if ((this.y + this.size) >= height || (this.y - this.size) <= 0) {
+      this.velY = -(this.velY)
+    }
+
+    this.x += this.velX
+    this.y += this.velY
   }
 
-  this.x += this.velX
-  this.y += this.velY
-}
+  collisionDetection() {
+    for (let i = 0; i < balls.length; i++) {
+      if ((!(this.x === balls[i].x && this.y === balls[i].y && this.velX === balls[i].velX && this.velY === balls[i].velY))) {
+        const dx = this.x - balls[i].x
+        const dy = this.y - balls[i].y
+        const distance = Math.sqrt(dx * dx + dy * dy)
 
-const collisionDetection = function (){
-  for (let i = 0; i < balls.length; i++) {
-    if ((!(this.x === balls[i].x && this.y === balls[i].y && this.velX === balls[i].velX && this.velY === balls[i].velY))) {
-      const dx = this.x - balls[i].x
-      const dy = this.y - balls[i].y
-      const distance = Math.sqrt(dx * dx + dy * dy)
-
-      if (distance < this.size + balls[i].size) {
-        balls[i].color = this.colour = 'rgb(' + random(0, 255) + ',' + random(0, 255) + ',' + random(0, 255) + ')';
+        if (distance < this.size + balls[i].size) {
+          balls[i].color = this.colour = 'rgb(' + random(0, 255) + ',' + random(0, 255) + ',' + random(0, 255) + ')';
+        }
       }
     }
   }
