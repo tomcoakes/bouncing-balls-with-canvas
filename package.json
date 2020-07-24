@@ -1,0 +1,19 @@
+{
+  "name": "bouncing-balls-with-canvas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomcoakes/bouncing-balls-with-canvas.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tomcoakes/bouncing-balls-with-canvas/issues"
+  },
+  "homepage": "https://github.com/tomcoakes/bouncing-balls-with-canvas#readme",
+  "dependencies": {
+    "prettier": "^2.0.5"
+  }
+}
