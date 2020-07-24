@@ -9,6 +9,12 @@ const random = (min, max) => {
 }
 
 class Ball {
+  x: number
+  y: number
+  velX: number
+  velY: number
+  colour: string
+  size: number
   constructor() {
     this.x = random(0, width)
     this.y = random(0, height)
