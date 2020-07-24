@@ -1,22 +1,15 @@
-const http = require('http')
-const fs = require('fs')
+const express = require('express')
+const port = 3000
 
-const hostname = '127.0.0.1'
-const port = 3001
+const app = express()
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200
-  res.writeHead(200, { 'Content-Type': 'text/html' })
-  fs.readFile(__dirname + req.url, function (error, data) {
-    if (error) {
-      res.writeHead(404)
-      res.end(JSON.stringify(error))
-    } else {
-      res.end(data)
-    }
-  })
+app.use(express.static('public'))
+
+app.get('/', (req, res) => {
+  console.log('/ endpoint hit')
+  res.sendFile(__dirname + '/index.html')
 })
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`)
+app.listen(port, () => {
+  console.log('app is now listening on port', port)
 })

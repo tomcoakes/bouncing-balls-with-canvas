@@ -7,6 +7,9 @@
     "type": "git",
     "url": "git+https://github.com/tomcoakes/bouncing-balls-with-canvas.git"
   },
+  "scripts": {
+    "start": "node server.js"
+  },
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -14,6 +17,7 @@
   },
   "homepage": "https://github.com/tomcoakes/bouncing-balls-with-canvas#readme",
   "dependencies": {
+    "express": "^4.17.1",
     "prettier": "^2.0.5"
   }
 }
