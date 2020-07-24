@@ -14,4 +14,4 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           key: ${{ secrets.KEY }}
-          script: whoami && ls -al && pwd
+          script: cd development/tomcoakes/bouncing-balls-with-canvas/ && git pull && npm install && npm run build && pwd && ls -al && npm start
